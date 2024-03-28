@@ -12,9 +12,11 @@ RUN opam install . --deps-only
 ADD . .
 RUN opam exec -- dune build
 
-FROM alpine:3.18.4 as run
+FROM alpine:3.19.1 as run
 RUN apk add --update libev
 
-COPY --from=build /home/opam/_build/default/app.exe /bin/app
+COPY --from=build /home/opam/_build/default/bin /app
 
-ENTRYPOINT ["/bin/app"]
+EXPOSE 8080
+ENTRYPOINT ["/app/main.exe"]
+#ENTRYPOINT [ "sleep", "infinity" ]

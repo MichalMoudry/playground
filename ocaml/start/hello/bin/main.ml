@@ -2,7 +2,7 @@ let () =
   Printf.printf "%s\n" Hello.En.v;
   Printf.printf "%s\n" Hello.Es.v;
 
-  Dream.run
+  Dream.run ~interface:"0.0.0.0"
   @@ Dream.logger
   @@ Dream.router [
     Dream.get "/health" (fun _ ->
