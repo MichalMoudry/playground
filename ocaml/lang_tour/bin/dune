@@ -1,0 +1,4 @@
+(executable
+ (public_name lang_tour)
+ (name main)
+ (libraries lang_tour))
